@@ -1,25 +1,43 @@
+
 /**
- * @param {number[]} candies
- * @param {number} extraCandies
- * @return {boolean[]}
+ * @param {number[]} flowerbed
+ * @param {number} n
+ * @return {boolean}
  */
+var canPlaceFlowers = function(flowerbed, n) {
 
-
-var kidsWithCandies = function(candies, extraCandies) {
-    let result = [];
-    let max = Math.max(...candies);
-
-    candies.map((currentValue, index)=>{
-        if(currentValue+extraCandies >= max){
-            result.push(true)
+    let number = 0;
+    let final_number = 0;
+   
+    for(let i=0; i< flowerbed.length; i++){   [1,0,0,0,0,0,1];
+        if(number == 3){
+            final_number = final_number +1;
+            number = 1;
+            if(flowerbed[i]==0){
+                number = number+1;
+            }
         }
         else{
-            result.push(false)
+            if (flowerbed[i]==0) {
+                number = number +1;
+            } else {
+                number = 0;
+            }
         }
-    })
+    }
 
-    return result;
+    if (final_number >= n) {
+        return true
+    } else {
+        return false
+    }
+    
 };
 
-candies = [4,2,1,1,2]; extraCandies = 1
-console.log(kidsWithCandies(candies,extraCandies))
+
+
+
+let flowerbed = [1,0,0,0,0,0,1];
+let n = 2
+
+console.log(canPlaceFlowers(flowerbed,n));
